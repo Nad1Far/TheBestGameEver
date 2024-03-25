@@ -6,6 +6,7 @@ public class Fireball : MonoBehaviour
     public float lifetime;
     public float damage = 10;
 
+    public GameObject explosionPrefab;
 
     private void Start()
     {
@@ -22,7 +23,8 @@ public class Fireball : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         DamageEnemy(collision);
-        DestroyFireball();
+        Explosion();
+        Invoke("Explosion", 0);
     }
 
 
@@ -46,5 +48,13 @@ public class Fireball : MonoBehaviour
             EnemyHealth.DealDamage(damage);
         }
     }
+
+    private void Explosion()
+    {
+        Destroy(gameObject);
+        var explosion = Instantiate(explosionPrefab);
+        explosion.transform.position = transform.position;
+    }
+
 
 }

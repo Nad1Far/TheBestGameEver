@@ -126,3 +126,6 @@ MonoBehaviour:
   speed: 50
   lifetime: 2.59
   damage: 10
+  delay: 2
+  explosionPrefab: {fileID: 7046249891846886778, guid: 43178d1b40a04404b996a167ffe7fcd4,
+    type: 3}

@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
     public PlayerController player;
-    public List<Transform> patrolPoints;
+    public Transform patrolPoint;
     public float viewAngle;
     public float damage = 30;
 
@@ -29,12 +28,12 @@ public class EnemyAI : MonoBehaviour
 
     private void PickNewPatrolPoint()
     {
-        _navMeshAgent.destination = patrolPoints[Random.Range(0, patrolPoints.Count)].position;
+        _navMeshAgent.destination = patrolPoint.position;
     }
 
     private void PatrolUpdate()
     {
-        if (! _isPlayerNoticed)
+        if (!_isPlayerNoticed)
         {
             if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
             {
